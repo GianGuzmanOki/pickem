@@ -1,24 +1,59 @@
-# README
+##### Prerequisites
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The setups steps expect following tools installed on the system.
 
-Things you may want to cover:
+- Ruby [2.5.1](https://github.com/GianGuzmanOki/pickem/blob/master/Gemfile#L4)
+- Rails [6.1.4](https://github.com/GianGuzmanOki/pickem/blob/master/Gemfile#L7)
 
-* Ruby version
+- Redis
+##### 1. Check out the repository
 
-* System dependencies
+```bash
+git clone https://github.com/GianGuzmanOki/pickem.git
+```
+##### 2. Create database.yml file
 
-* Configuration
+Copy the sample database.yml file and edit the database configuration as required.
 
-* Database creation
+```bash
+cp config/database.yml.sample config/database.yml
+```
 
-* Database initialization
+##### 3. Install all the gems
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+bundle install
+```
 
-* Deployment instructions
 
-* ...
+##### 4. Create and setup the database
+
+Run the following commands to create and setup the database.
+
+```ruby
+bundle exec rake db:create
+bundle exec rake db:migrate
+```
+Run the seed to create a default admin if you are on a development environment
+```ruby
+bundle exec rake db:seed
+```
+
+##### 5. Start the Rails server
+
+You can start the rails server using the command given below.
+
+```ruby
+bundle exec rails s
+```
+
+And now you can visit the site with the URL http://localhost:3000
+
+##### 6. Start the Sidekiq server
+
+Start sidekiq from the root of your Rails application so the jobs will be processed:
+
+```ruby
+bundle exec sidekiq
+```
