@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_16_012638) do
+ActiveRecord::Schema.define(version: 2021_08_16_020248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2021_08_16_012638) do
     t.bigint "winner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "default_question", default: false, null: false
     t.index ["match_id"], name: "index_match_questions_on_match_id"
     t.index ["winner_id"], name: "index_match_questions_on_winner_id"
   end

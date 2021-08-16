@@ -9,6 +9,10 @@ class Match < ApplicationRecord
 
   after_create :add_default_question
 
+  def default_question
+    match_questions.find_by(default_question: true)
+  end
+
   private
 
   def different_teams
@@ -16,6 +20,6 @@ class Match < ApplicationRecord
   end
 
   def add_default_question
-    match_questions.create(question: 'Who is going to win?')
+    match_questions.create(question: 'Who is going to win?', default_question: true)
   end
 end
