@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_16_005230) do
+ActiveRecord::Schema.define(version: 2021_08_16_012638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,33 @@ ActiveRecord::Schema.define(version: 2021_08_16_005230) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "match_questions", force: :cascade do |t|
+    t.bigint "match_id", null: false
+    t.string "question", null: false
+    t.bigint "winner_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["match_id"], name: "index_match_questions_on_match_id"
+    t.index ["winner_id"], name: "index_match_questions_on_winner_id"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.bigint "home_team_id", null: false
+    t.bigint "away_team_id", null: false
+    t.date "game_date", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["away_team_id"], name: "index_matches_on_away_team_id"
+    t.index ["home_team_id"], name: "index_matches_on_home_team_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -53,4 +80,7 @@ ActiveRecord::Schema.define(version: 2021_08_16_005230) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "match_questions", "teams", column: "winner_id"
+  add_foreign_key "matches", "teams", column: "away_team_id"
+  add_foreign_key "matches", "teams", column: "home_team_id"
 end
