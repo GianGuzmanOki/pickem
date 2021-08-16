@@ -9,6 +9,7 @@ class PicksUpdateWorker
       winner_picks.update_all(result: true)
       loser_picks = Pick.where(match_question_id: match_question_id).where.not(team_id: match_question.winner_id)
       loser_picks.update_all(result: false)
+      MatchUpdateWorker.perform_async(match_question.match.id)
     end
   end
 end

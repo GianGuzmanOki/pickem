@@ -13,6 +13,10 @@ class Match < ApplicationRecord
     match_questions.find_by(default_question: true)
   end
 
+  def not_solved_questions
+    match_questions.where(winner_id: nil)
+  end
+
   private
 
   def different_teams
