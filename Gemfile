@@ -50,6 +50,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'jwt', '~> 2.2.3'
 gem 'rack-cors', '~> 1.1.1'
-gem 'devise'
-gem 'activeadmin'
-gem 'active_model_serializers'
+gem 'devise', '~> 4.8.0'
+gem 'activeadmin', '~> 2.9.0'
+gem 'active_model_serializers', '~> 0.10.12'
+gem 'kaminari', '~> 1.2.1'
