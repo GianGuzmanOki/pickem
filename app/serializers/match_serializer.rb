@@ -1,5 +1,5 @@
 class MatchSerializer < ActiveModel::Serializer
-  attributes :id, :home_team, :away_team, :game_date, :status, :default_question, :default_question_value
+  attributes :id, :home_team_id, :home_team, :away_team_id, :away_team, :game_date, :status, :default_question, :default_question_value
 
   def home_team
     object.home_team.name
