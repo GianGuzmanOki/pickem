@@ -86,6 +86,7 @@ GEM
     case_transform (0.2)
       activesupport
     concurrent-ruby (1.1.9)
+    connection_pool (2.2.5)
     crass (1.0.6)
     devise (4.8.0)
       bcrypt (~> 3.0)
@@ -197,6 +198,7 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.4.0)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -229,6 +231,10 @@ GEM
       sprockets-rails
       tilt
     semantic_range (3.0.0)
+    sidekiq (6.2.1)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -281,6 +287,7 @@ DEPENDENCIES
   rails (~> 6.1.4)
   rspec-rails
   sass-rails (>= 6)
+  sidekiq (~> 6.2.1)
   spring
   turbolinks (~> 5)
   tzinfo-data
