@@ -57,3 +57,11 @@ Start sidekiq from the root of your Rails application so the jobs will be proces
 ```ruby
 bundle exec sidekiq
 ```
+
+##### 7. Test Suite
+
+If you would like to check the collection of test just run rspec from the root of your Rails application:
+
+```ruby
+bundle exec rspec spec
+```
