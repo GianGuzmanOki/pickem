@@ -1,6 +1,6 @@
 module V1
   class MatchesController < ApiV1Controller
-    skip_before_action :require_login, only: :index
+    skip_before_action :require_login
     def index
       @matches = Match.page(params[:page]).per(4)
       render json: @matches, each_serializer: MatchSerializer, meta: meta_attributes(@matches)

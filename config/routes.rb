@@ -11,4 +11,13 @@ Rails.application.routes.draw do
     get "/auto_login", to: "auth#auto_login"
     get "/user_is_authed", to: "auth#user_is_authed"
   end
+
+  scope module: :admin do
+    scope module: :v1, path: 'admin/api/v1' do
+      post "/match_questions/:match_question_id/mark_winner", to: "match_questions#mark_winner"
+      post "/login", to: "auth#login"
+      get "/auto_login", to: "auth#auto_login"
+      get "/user_is_authed", to: "auth#user_is_authed"
+    end
+  end
 end
