@@ -6,6 +6,7 @@ The setups steps expect following tools installed on the system.
 - Rails [6.1.4](https://github.com/GianGuzmanOki/pickem/blob/master/Gemfile#L7)
 
 - Redis
+- PostgreSQL
 ##### 1. Check out the repository
 
 ```bash
@@ -64,4 +65,18 @@ If you would like to check the collection of test just run rspec from the root o
 
 ```ruby
 bundle exec rspec spec
+```
+
+##### 8. First Steps
+
+Login into http://localhost:3000/admin, use an AdminUser account and create the Teams and Matches that you prefer, then you can see those on the frontend.
+
+If you would like to update the result of a match you can use this API endpoint:
+
+http://localhost:3000/admin/api/v1/match_questions/:match_question_id/mark_winner
+
+```ruby
+{
+    "winner": 1 #1 is the Team ID
+}
 ```
